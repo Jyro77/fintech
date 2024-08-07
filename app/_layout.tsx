@@ -1,3 +1,4 @@
+import Colors from "@/constants/Colors";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
@@ -13,7 +14,7 @@ export {
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+const InitialLayout = () => {
     const [loaded, error] = useFonts({
         SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
         ...FontAwesome.font,
@@ -34,13 +35,24 @@ export default function RootLayout() {
         return null;
     }
 
-    return <RootLayoutNav />;
-}
-
-function RootLayoutNav() {
     return (
         <Stack>
             <Stack.Screen name='index' options={{ headerShown: false }} />
+            <Stack.Screen
+                name='singup'
+                options={{
+                    title: "",
+                    headerBackTitle: "",
+                    headerShadowVisible: false,
+                    headerStyle: { backgroundColor: Colors.background },
+                }}
+            />
         </Stack>
     );
-}
+};
+
+const RootLayoutNav = () => {
+    return <InitialLayout />;
+};
+
+export default RootLayoutNav;

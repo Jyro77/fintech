@@ -20,7 +20,8 @@
                 "foregroundImage": "./assets/images/adaptive-icon.png",
                 "backgroundColor": "#ffffff"
             },
-            "package": "com.anonymous.fintech"
+            "package": "com.anonymous.fintech",
+            "permissions": "RECORD_AUDIO"
         },
         "web": {
             "bundler": "metro",

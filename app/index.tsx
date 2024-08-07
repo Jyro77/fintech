@@ -2,6 +2,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useAssets } from "expo-asset";
 import { ResizeMode, Video } from "expo-av";
 import { Link } from "expo-router";
+import { defaultStyles } from "@/constants/Styles";
+import Colors from "@/constants/Colors";
 
 const Page = () => {
     const [assets] = useAssets([require("@/assets/videos/intro.mp4")]);
@@ -12,12 +14,16 @@ const Page = () => {
         <View style={styles.container}>
             {assets && (
                 <Video
+                    source={{
+                        uri: "https://cloud.appwrite.io/v1/storage/buckets/66aaef900004616dd277/files/66ac39c2000181bbf9f8/view?project=66aaeca800165bc2e1f6&mode=admin",
+                    }}
+                    //source={{ uri: assets[0].uri }}
                     resizeMode={ResizeMode.COVER}
                     isMuted
                     isLooping
                     shouldPlay
-                    source={{ uri: assets[0].uri }}
-                    style={styles.video}
+                    style={[styles.video, { backgroundColor: "#050505" }]}
+                    onLoad={() => console.log("load")}
                 />
             )}
             <View style={{ marginTop: 80, padding: 20 }}>
@@ -26,10 +32,40 @@ const Page = () => {
                 </Text>
             </View>
 
-            <View>
-                <Link href={"/login"} asChild>
+            <View style={styles.buttons}>
+                <Link
+                    href={"/login"}
+                    style={[
+                        defaultStyles.pillButton,
+                        { flex: 1, backgroundColor: Colors.dark },
+                    ]}
+                    asChild>
                     <TouchableOpacity>
-                        <Text>Login in</Text>
+                        <Text
+                            style={{
+                                color: "white",
+                                fontSize: 22,
+                                fontWeight: "500",
+                            }}>
+                            Log in
+                        </Text>
+                    </TouchableOpacity>
+                </Link>
+                <Link
+                    href={"/singup"}
+                    style={[
+                        defaultStyles.pillButton,
+                        { flex: 1, backgroundColor: "#fff" },
+                    ]}
+                    asChild>
+                    <TouchableOpacity>
+                        <Text
+                            style={{
+                                fontSize: 22,
+                                fontWeight: "500",
+                            }}>
+                            Sign Up
+                        </Text>
                     </TouchableOpacity>
                 </Link>
             </View>
