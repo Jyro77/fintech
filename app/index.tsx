@@ -4,6 +4,7 @@ import { ResizeMode, Video } from "expo-av";
 import { Link } from "expo-router";
 import { defaultStyles } from "@/constants/Styles";
 import Colors from "@/constants/Colors";
+import { StatusBar } from "expo-status-bar";
 
 const Page = () => {
     const [assets] = useAssets([require("@/assets/videos/intro.mp4")]);
@@ -69,6 +70,8 @@ const Page = () => {
                     </TouchableOpacity>
                 </Link>
             </View>
+
+            <StatusBar style={"light"} />
         </View>
     );
 };
