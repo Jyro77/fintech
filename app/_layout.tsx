@@ -1,9 +1,11 @@
 import Colors from "@/constants/Colors";
+import { Ionicons } from "@expo/vector-icons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Link, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { TouchableOpacity } from "react-native";
 import "react-native-reanimated";
 
 export {
@@ -46,6 +48,31 @@ const InitialLayout = () => {
                     headerShadowVisible: false,
                     headerStyle: { backgroundColor: Colors.background },
                 }}
+            />
+            <Stack.Screen
+                name='login'
+                options={{
+                    title: "",
+                    headerBackTitle: "",
+                    headerShadowVisible: false,
+                    headerStyle: { backgroundColor: Colors.background },
+                    headerRight: () => (
+                        <Link href={"/help"} asChild>
+                            <TouchableOpacity>
+                                <Ionicons
+                                    name='help-circle-outline'
+                                    size={34}
+                                    color={Colors.dark}
+                                />
+                            </TouchableOpacity>
+                        </Link>
+                    ),
+                }}
+            />
+
+            <Stack.Screen
+                name='help'
+                options={{ title: "help", presentation: "modal" }}
             />
         </Stack>
     );

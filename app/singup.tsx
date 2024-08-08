@@ -12,7 +12,7 @@ import { defaultStyles } from "@/constants/Styles";
 import Colors from "@/constants/Colors";
 import { Link } from "expo-router";
 
-const Singup = () => {
+const Page = () => {
     const [countryCode, setCountryCode] = useState("+1");
     const [phoneNumber, setPhoneNumber] = useState("");
     const keyboardVerticalOffset = Platform.OS === "ios" ? 80 : 0;
@@ -65,6 +65,12 @@ const Singup = () => {
                     onPress={onSignup}>
                     <Text style={defaultStyles.buttonText}>Sign up</Text>
                 </TouchableOpacity>
+
+                <View style={style.orContainer}>
+                    <View style={style.orDashes}></View>
+                    <Text style={style.orText}>or</Text>
+                    <View style={style.orDashes}></View>
+                </View>
             </View>
         </KeyboardAvoidingView>
     );
@@ -81,7 +87,7 @@ const style = StyleSheet.create({
         padding: 20,
         borderRadius: 16,
         fontSize: 20,
-        marginBottom: 10,
+        marginRight: 10,
     },
     enable: {
         backgroundColor: Colors.primary,
@@ -89,6 +95,20 @@ const style = StyleSheet.create({
     disable: {
         backgroundColor: Colors.primaryMuted,
     },
+    orContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 16,
+    },
+    orDashes: {
+        flex: 1,
+        height: StyleSheet.hairlineWidth,
+        backgroundColor: Colors.gray,
+    },
+    orText: {
+        color: Colors.gray,
+        fontSize: 20,
+    },
 });
 
-export default Singup;
+export default Page;

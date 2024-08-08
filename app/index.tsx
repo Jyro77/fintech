@@ -22,7 +22,7 @@ const Page = () => {
                     isMuted
                     isLooping
                     shouldPlay
-                    style={[styles.video, { backgroundColor: "#050505" }]}
+                    style={[styles.video, { backgroundColor: "#0f0f0f" }]}
                     onLoad={() => console.log("load")}
                 />
             )}
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
         position: "absolute",
     },
     header: {
+        color: "white",
         fontSize: 36,
         fontWeight: "900",
         textTransform: "uppercase",
